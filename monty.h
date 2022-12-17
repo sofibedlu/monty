@@ -49,7 +49,9 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void div(stack **stack, unsigned int line_number);
 void op_selector(stack_t **stack, char *token, unsigned int line_num);
 int is_number(char *chr);
+int check_n_element(stack_t **stack);
 void free_list(stack_t *stack);
 #endif

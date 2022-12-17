@@ -7,15 +7,10 @@
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
 	stack_t *tp, *tp1;
-	int n = 0;
+	int n;
 
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		n++;
-	}
+	n = check_n_element(stack);
 	if (n < 2 || !*stack)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
@@ -42,15 +37,10 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
-	int n1 = 0, sum;
+	int n;
 
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		n1++;
-	}
-	if (n1 < 2 || !*stack)
+	n = check_n_element(stack);
+	if (n < 2 || !*stack)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -77,14 +67,9 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
-	int n = 0, diff;
+	int n;
 
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		n++;
-	}
+	n = check_n_element(stack);
 	if (n < 2 || !*stack)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
@@ -93,4 +78,21 @@ void sub(stack_t **stack, unsigned int line_number)
 	diff = (*stack)->next->n - (*stack)->n;
 	pop(stack, line_number);
 	(*stack)->n = diff;
+}
+/**
+ * check_n_element - count number of element in the stack
+ * @stack: stack pointer
+ * Return: number of element
+ */
+int check_n_element(stack_t **stack)
+{
+	int n = 0;
+	stack_t *temp = *stack;
+
+	while (temp != NULL)
+	{
+		temp  = temp->next;
+		n++;
+	}
+	return (n);
 }

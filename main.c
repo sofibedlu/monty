@@ -68,6 +68,7 @@ void op_selector(stack_t **stack, char *token, unsigned int line_num)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", div},
 		{NULL, NULL}
 	};
 
