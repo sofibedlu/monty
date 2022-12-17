@@ -80,15 +80,19 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
+	stack_t *temp;
 
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	*stack = (*stack)->next;
-	free(temp);
+	temp = (*stack)->next;
+	free(*stack);
+	*stack = temp;
+	if (*stack == NULL)
+		return;
+	(*stack)->prev = NULL;
 }
 /**
  * is_number - check the input whether its integer or not
