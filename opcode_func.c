@@ -74,6 +74,23 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 /**
+ * pop - removes the top element of the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	free(temp);
+}
+/**
  * is_number - check the input whether its integer or not
  * @chr: argument to the instruction to be checked
  * Return: 0 if not number 1 if its number
