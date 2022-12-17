@@ -35,3 +35,27 @@ void swap(stack_t **stack, unsigned int line_number)
 	else
 		tp->next = NULL;
 }
+/**
+ * add - adds the top two elemets of the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instructions
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	int n1 = 0, sum;
+
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		n1++;
+	}
+	if (n1 < 2 || !*stack)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	sum = (*stack)->n + (*stack)->next->n;
+	pop(stack, line_number);
+	(*stack)->n = sum;
+}
