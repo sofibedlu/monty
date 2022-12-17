@@ -62,6 +62,7 @@ void op_selector(stack_t **stack, char *token, unsigned int line_num)
 	instruction_t op_code[] = {
 		{"push", _push},
 		{"pall", _display},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

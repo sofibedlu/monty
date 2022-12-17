@@ -60,6 +60,20 @@ void _display(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
+ * pint - printd the value at the top of the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+/**
  * is_number - check the input whether its integer or not
  * @chr: argument to the instruction to be checked
  * Return: 0 if not number 1 if its number
