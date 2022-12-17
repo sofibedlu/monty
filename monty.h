@@ -45,6 +45,7 @@ void _push(stack_t **stack, unsigned int line_number);
 void _display(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 void op_selector(stack_t **stack, char *token, unsigned int line_num);
 int is_number(char *chr);
 void free_list(stack_t *stack);
