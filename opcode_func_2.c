@@ -59,3 +59,13 @@ void add(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = sum;
 }
+/**
+ * nop - this opcode doesn't do anything
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
