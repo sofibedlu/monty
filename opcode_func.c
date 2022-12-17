@@ -1,0 +1,83 @@
+#include "monty.h"
+
+/**
+ * _push - pushes element to the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void _push(stack_t **stack, unsigned int line_number)
+{
+	stack_t *new;
+	int num;
+
+	(void)line_number;
+	if ((ch == NULL) || (is_number(ch) == 0))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	num = atoi(ch);
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(new);
+		exit(EXIT_FAILURE);
+	}
+	if (*stack == NULL)
+	{
+		new->n = num;
+		new->next = NULL;
+		new->prev = NULL;
+		*stack = new;
+	}
+	else
+	{
+		new->n = num;
+		new->next = *stack;
+		new->prev = NULL;
+		(*stack)->prev = new;
+		*stack = new;
+	}
+}
+/**
+ * _display - display elements in the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void _display(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	temp = *stack;
+	if (temp == NULL)
+	{
+		fprintf(stderr, "under flow\n");
+		exit(EXIT_FAILURE);
+	}
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
+}
+/**
+ * is_number - check the input whether its integer or not
+ * @chr: argument to the instruction to be checked
+ * Return: 0 if not number 1 if its number
+ */
+int is_number(char *chr)
+{
+	int i = 0;
+
+	if (chr == NULL)
+		return (0);
+	while (chr[i] != '\0')
+	{
+		if (chr[i] > 57 || chr[i] < 48)
+			return (0);
+		i++;
+	}
+	return (1);
+}
