@@ -52,10 +52,7 @@ void _display(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	temp = *stack;
 	if (temp == NULL)
-	{
-		fprintf(stderr, "under flow\n");
 		exit(EXIT_FAILURE);
-	}
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
