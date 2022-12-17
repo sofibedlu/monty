@@ -37,7 +37,7 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	int n;
+	int n, sum;
 
 	n = check_n_element(stack);
 	if (n < 2 || !*stack)
@@ -67,7 +67,7 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	int n;
+	int n, diff;
 
 	n = check_n_element(stack);
 	if (n < 2 || !*stack)
