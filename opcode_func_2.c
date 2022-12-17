@@ -69,3 +69,28 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 }
+/**
+ * sub - subtract the top element of the stack from the second top
+ * element of the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	int n = 0, diff;
+
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		n++;
+	}
+	if (n < 2 || !*stack)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	diff = (*stack)->next->n - (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = diff;
+}
