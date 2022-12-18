@@ -100,7 +100,12 @@ void pstr(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	while (temp != NULL)
 	{
-		if ((temp->n) == 0 || isascii(temp->n) == 0)
+		if (temp->n == 0)
+		{
+			printf("%c", temp->n);
+			break;
+		}
+		if (isascii(temp->n) == 0)
 			break;
 		printf("%c", temp->n);
 		temp = temp->next;
