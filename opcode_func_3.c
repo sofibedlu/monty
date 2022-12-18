@@ -88,3 +88,30 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", (*stack)->n);
 }
+/**
+ * pstr - print the string at the top of the stack
+ * @stack: pointer to the stack
+ * @line_number: line number of current instruction
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	(void)line_number;
+	if (temp == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	while (temp != NULL)
+	{
+		if (temp == NULL || (temp->n) == 0 || isascii(temp->n) == 0)
+		{
+			printf("\n");
+			return;
+		}
+		printf("%c", temp->n);
+		temp = temp->next;
+	}
+	printf("\n");
+}
