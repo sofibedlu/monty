@@ -25,3 +25,22 @@ void _div(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = division;
 }
+/**
+ * mul - multiply the top two element on the stack
+ * @stack: stack pointer
+ * @line_number: line number of current instruction
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int n, result;
+
+	n = check_n_element(stack);
+	if (n < 2 || !*stack)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	result = (*stack)->next->n * (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = result;
+}
