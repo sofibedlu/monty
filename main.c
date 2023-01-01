@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	buffer = NULL;
 	if (ac != 2)
 	{
-		fprintf(stderr, "Usage: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(av[1], "r");
@@ -73,10 +73,11 @@ void op_selector(stack_t **stack, char *token, unsigned int line_num)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 
-	(void)line_num;
+	/*(void)line_num;*/
 	while (op_code[i].opcode != NULL)
 	{
 		if (strcmp(op_code[i].opcode, token) == 0)

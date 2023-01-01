@@ -10,7 +10,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int num;
 
-	(void)line_number;
+	/*(void)line_number;*/
 	if ((ch == NULL) || (is_number(ch) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -52,7 +52,7 @@ void _display(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	temp = *stack;
 	if (temp == NULL)
-		exit(EXIT_FAILURE);
+		return;
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
@@ -107,6 +107,11 @@ int is_number(char *chr)
 		return (0);
 	while (chr[i] != '\0')
 	{
+		if (chr[i] == '-' && i == 0)
+		{
+			i++;
+			continue;
+		}
 		if (chr[i] > 57 || chr[i] < 48)
 			return (0);
 		i++;
