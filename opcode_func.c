@@ -10,7 +10,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int num;
 
-	/*(void)line_number;*/
+	(void)line_number;
 	if ((ch == NULL) || (is_number(ch) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);

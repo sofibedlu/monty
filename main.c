@@ -77,7 +77,7 @@ void op_selector(stack_t **stack, char *token, unsigned int line_num)
 		{NULL, NULL}
 	};
 
-	/*(void)line_num;*/
+	(void)line_num;
 	while (op_code[i].opcode != NULL)
 	{
 		if (strcmp(op_code[i].opcode, token) == 0)
