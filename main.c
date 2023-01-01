@@ -73,7 +73,6 @@ void op_selector(stack_t **stack, char *token, unsigned int line_num)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
-		{"rotl", rotl},
 		{NULL, NULL}
 	};
 
