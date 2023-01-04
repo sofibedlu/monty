@@ -7,37 +7,17 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
-	int num;
-
 	(void)line_number;
 	if ((ch == NULL) || (is_number(ch) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(ch);
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(new);
-		exit(EXIT_FAILURE);
-	}
-	if (*stack == NULL)
-	{
-		new->n = num;
-		new->next = NULL;
-		new->prev = NULL;
-		*stack = new;
-	}
+	if (status.mod == 1)
+		add_node(stack, atoi(ch));
 	else
 	{
-		new->n = num;
-		new->next = *stack;
-		new->prev = NULL;
-		(*stack)->prev = new;
-		*stack = new;
+		add_node_at_end(stack, atoi(ch));
 	}
 }
 /**

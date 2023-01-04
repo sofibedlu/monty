@@ -17,6 +17,7 @@ int main(int ac, char **av)
 	char *token, *buffer;
 
 	buffer = NULL;
+	status.mod = 1;
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -59,28 +60,22 @@ int main(int ac, char **av)
 void op_selector(stack_t **stack, char *token, unsigned int line_num)
 {
 	int i = 0;
-	instruction_t op_code[] = {
-		{"push", _push},
-		{"pall", _display},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{NULL, NULL}
-	};
 
+	instruction_t op_code[] = INSTRUCTIONS;
 	(void)line_num;
+	if (!strcmp(token, "stack"))
+	{
+		status.mod = 1;
+		return;
+	}
+	if (!strcmp(token, "queue"))
+	{
+		status.mod = 0;
+		return;
+	}
 	while (op_code[i].opcode != NULL)
 	{
+
 		if (strcmp(op_code[i].opcode, token) == 0)
 		{
 			op_code[i].f(stack, line_num);

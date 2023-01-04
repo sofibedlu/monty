@@ -10,6 +10,26 @@
 #include <string.h>
 #include <ctype.h>
 
+#define INSTRUCTIONS	\
+	{		\
+		{"push", _push},	\
+		{"pall", _display},	\
+		{"pint", pint},		\
+		{"pop", pop},		\
+		{"swap", swap},		\
+		{"add", add},		\
+		{"nop", nop},		\
+		{"sub", sub},		\
+		{"div", _div},		\
+		{"mul", mul},		\
+		{"mod", mod},		\
+		{"pchar", pchar},	\
+		{"pstr", pstr},		\
+		{"rotl", rotl},		\
+		{"rotr", rotr},		\
+		{NULL, NULL}		\
+	}
+
 extern char *ch;
 
 /**
@@ -41,6 +61,21 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct mode - identify the data structure mode
+ * @mod: holds the value 'stack' oe queues
+ */
+typedef struct mode
+{
+	int mod;
+} mode;
+mode status;
+
+
+void add_node(stack_t **stack, int num);
+void add_node_at_end(stack_t **stack, int num);
+
 
 void _push(stack_t **stack, unsigned int line_number);
 void _display(stack_t **stack, unsigned int line_number);
